@@ -6,12 +6,10 @@
   <title>Mailer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
     integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
-    crossorigin="anonymous"
-  >
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -20,10 +18,10 @@
   <![endif]-->
   <div class="pure-g">
 
-    <div class="pure-u-2-3" style="margin: 0 auto;">
+    <div class="pure-u-2-3 ml-center-vertical">
       <h2>Send an email</h2>
 
-      <form class="pure-form pure-form-stacked" action="/api/v1/emails" method="POST">
+      <form class="pure-form pure-form-stacked" action="/api/v1/emails/send" method="POST">
         <label for="from">From</label>
         <input type="text" name="from" placeholder="someone@example.com" class="pure-input-1-2">
 
