@@ -1,6 +1,6 @@
 const sendgridURI = 'https://api.sendgrid.com/v3/mail/send';
 
-class Mailer {
+export default class Mailer {
 
   constructor(httpClient) {
     this.httpClient = httpClient;
@@ -19,5 +19,3 @@ class Mailer {
     // FIXME Handle error etc.
   }
 }
-
-module.exports = Mailer;

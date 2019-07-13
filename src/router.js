@@ -1,5 +1,5 @@
-const express = require('express');
-const emails = require('./controllers/emails');
+import express from 'express';
+import emails from './controllers/emails';
 
 const router = express.Router();
 

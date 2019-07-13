@@ -1,8 +1,8 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const SendgridMailer = require('./sendgrid/mailer');
+import SendgridMailer from './sendgrid/mailer';
 
-class Mailer {
+export default class Mailer {
   constructor() {
     this.submailers = [];
   }
@@ -27,7 +27,3 @@ class Mailer {
     }
   }
 }
-
-const defaultMailer = Mailer.defaultMailer();
-
-module.exports = defaultMailer;
