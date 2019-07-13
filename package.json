@@ -1,0 +1,28 @@
+{
+  "name": "mailer",
+  "version": "0.1.0",
+  "description": "Web app for sending emails",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-harvey/mailer.git"
+  },
+  "author": "Matthew Harvey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matt-harvey/mailer/issues"
+  },
+  "homepage": "https://github.com/matt-harvey/mailer#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv-safe": "^6.1.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
