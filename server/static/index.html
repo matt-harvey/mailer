@@ -5,14 +5,42 @@
   <meta charset="utf-8">
   <title>Mailer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+    integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+    crossorigin="anonymous"
+  >
 </head>
 
 <body>
   <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
+  <div class="pure-g">
 
-  Hello
+    <div class="pure-u-2-3" style="margin: 0 auto;">
+      <h2>Send an email</h2>
+
+      <form class="pure-form pure-form-stacked" action="/api/v1/emails" method="POST">
+        <label for="from">From</label>
+        <input type="text" name="from" placeholder="someone@example.com" class="pure-input-1-2">
+
+        <label for="to">To</label>
+        <input type="text" name="to" placeholder="ab@example.net, cd@example.com" class="pure-input-1-2">
+
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" class="pure-input-1-2">
+
+        <label for="message">Body</label>
+        <textarea name="message" rows="15" class="pure-input-1-2"></textarea>
+
+        <input type="submit" value="Send" class="pure-button pure-button-primary pure-input-1-2">
+      </form>
+    </div>
+
+  </div>
 </body>
 
 </html>

@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 const appName = process.env.APP_NAME;
 
 app.use(bodyParser.json({ limit: '256MB' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '256MG' }));
 
 app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/api/v1', router);
