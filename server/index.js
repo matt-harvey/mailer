@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const router = require('./router');
 const dotenv = require('dotenv-safe');
 
@@ -10,6 +11,7 @@ const appName = process.env.APP_NAME;
 
 app.use(bodyParser.json({ limit: '256MB' }));
 
+app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/api/v1', router);
 
 app.listen(port, () => {
