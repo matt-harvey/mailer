@@ -1,4 +1,4 @@
-const mailer = require('../services/mailer');
+const mailer = require('../services/mailer/mailer');
 
 const send = async (request, response) => {
   const { body } = request;
