@@ -1,6 +1,36 @@
-$('#ml-send-email').submit(function (event) {
+var $form = $('#ml-send-email');
+
+// Configure form validation
+
+$.validator.addMethod('emails', function(value, element) {
+  var segments = value.split(', ');
+  var numSegments = segments.length;
+  if (numSegments === 0) {
+    return false;
+  }
+  for (var i = 0; i !== numSegments; ++i) {
+    var segment = segments[i];
+    var isValidEmail = $.validator.methods.email.call(this, segment, element);
+    if (!isValidEmail) {
+      return false;
+    }
+  }
+  return true;
+}, 'Please enter a comma-separated list of emails');
+
+$.validator.addClassRules({
+  emails: { emails: true }
+});
+
+$form.validate();
+
+// Handle form submit
+
+$form.submit(function (event) {
   event.preventDefault();
-  var $form = $(this);
+  if (!$form.valid()) {
+    return;
+  }
   var data = $form.serialize();
   var url = $form.attr('action');
   $.post(url, data).done(notifySuccess).fail(notifyFailure);

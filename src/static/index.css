@@ -1,3 +1,11 @@
 .ml-center-vertical {
   margin: 0 auto;
 }
+
+.error {
+  color: red;
+}
+
+.ml-input-wrapper {
+  margin: 0 0 1em 0;
+}

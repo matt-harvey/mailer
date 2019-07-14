@@ -21,19 +21,28 @@
       <h2>Send an email</h2>
 
       <form id="ml-send-email" class="pure-form pure-form-stacked" action="/api/v1/emails/send" method="POST">
-        <label for="from">From</label>
-        <input type="text" name="from" placeholder="someone@example.com" class="pure-input-1-2">
+        <div class="ml-input-wrapper">
+          <label for="from">From</label>
+          <input required type="email" name="from" placeholder="someone@example.com" class="pure-input-1-2">
+        </div>
 
-        <label for="to">To</label>
-        <input type="text" name="to" placeholder="ab@example.net, cd@example.com" class="pure-input-1-2">
+        <div class="ml-input-wrapper">
+          <label for="to">To</label>
+          <input required type="text" name="to" placeholder="ab@example.net, cd@example.com"
+            class="emails pure-input-1-2">
+        </div>
 
-        <label for="subject">Subject</label>
-        <input type="text" name="subject" class="pure-input-1-2">
+        <div class="ml-input-wrapper">
+          <label for="subject">Subject</label>
+          <input required type="text" name="subject" class="pure-input-1-2">
+        </div>
 
-        <label for="message">Body</label>
-        <textarea name="message" rows="15" class="pure-input-1-2"></textarea>
+        <div class="ml-input-wrapper">
+          <label for="message">Body</label>
+          <textarea required name="message" rows="15" class="pure-input-1-2"></textarea>
+        </div>
 
-        <input type="submit" value="Send" class="pure-button pure-button-primary pure-input-1-2">
+        <input required type="submit" value="Send" class="pure-button pure-button-primary pure-input-1-2">
       </form>
     </div>
 
@@ -43,6 +52,8 @@
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+
   <script src="main.js"></script>
 </body>
 
