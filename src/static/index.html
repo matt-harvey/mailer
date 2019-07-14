@@ -1,11 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="">
 
 <head>
   <meta charset="utf-8">
   <title>Mailer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
     integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
     crossorigin="anonymous">
@@ -21,7 +20,7 @@
     <div class="pure-u-2-3 ml-center-vertical">
       <h2>Send an email</h2>
 
-      <form class="pure-form pure-form-stacked" action="/api/v1/emails/send" method="POST">
+      <form id="ml-send-email" class="pure-form pure-form-stacked" action="/api/v1/emails/send" method="POST">
         <label for="from">From</label>
         <input type="text" name="from" placeholder="someone@example.com" class="pure-input-1-2">
 
@@ -39,6 +38,12 @@
     </div>
 
   </div>
+
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  <script src="main.js"></script>
 </body>
 
 </html>

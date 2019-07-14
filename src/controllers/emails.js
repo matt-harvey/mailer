@@ -11,10 +11,9 @@ const send = async (request, response) => {
 
   try {
     await mailService.send(email);
-    response.status(200).redirect('/');
+    response.status(200).json({ email });
   } catch (err) {
-    console.log('DEBUG err.message:', err.message);
-    response.status(500).redirect('/'); // FIXME
+    response.status(500).json({ err });
   }
 };
 
