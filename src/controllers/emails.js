@@ -1,4 +1,4 @@
-import Mailer from '../services/mailer/mailer';
+import MailService from '../services/mail/mailService';
 
 const send = async (request, response) => {
   const { body } = request;
@@ -7,12 +7,13 @@ const send = async (request, response) => {
   const { from, subject, message } = body;
   const to = body.to.split(',').map(address => address.trim());
   const email = { from, subject, message, to };
-  const mailer = Mailer.defaultMailer();
+  const mailService = new MailService();
 
   try {
-    await mailer.send(email);
+    await mailService.send(email);
     response.status(200).redirect('/');
   } catch (err) {
+    console.log('DEBUG err.message:', err.message);
     response.status(500).redirect('/'); // FIXME
   }
 };
