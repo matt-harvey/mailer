@@ -3,12 +3,11 @@ import FormData from 'form-data';
 export default class Mailer {
 
   axiosParams(email) {
+    const domain = process.env.MAILGUN_DOMAIN;
+    const url = `https://api.mailgun.net/v3/${domain}/messages`;
     const data = this.data(email);
-    return {
-      url: this.apiURL(),
-      data: data,
-      config: this.config(data),
-    };
+    const config = this.config(data);
+    return { url, data, config };
   }
 
   data(email) {
@@ -21,20 +20,12 @@ export default class Mailer {
     return data;
   }
 
-  apiURL() {
-    const mailgunDomain = process.env.MAILGUN_DOMAIN;
-    return `https://api.mailgun.net/v3/${mailgunDomain}/messages`;
-  }
-
   config(data) {
-    const apiKey = process.env.MAILGUN_API_KEY;
+    const password = process.env.MAILGUN_API_KEY;
     const formHeaders = data.getHeaders();
     return {
       headers: { ...formHeaders },
-      auth: {
-        username: 'api',
-        password: apiKey,
-      },
+      auth: { username: 'api', password },
     };
   }
 }

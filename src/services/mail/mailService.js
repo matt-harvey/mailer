@@ -6,8 +6,8 @@ import MailgunMailer from './mailgun/mailer';
 export default class MailerService {
   constructor() {
     this.mailers = [
-      // new SendgridMailer(), // FIXME
-      new MailgunMailer(),
+      new SendgridMailer(),
+      // new MailgunMailer(), // FIXME
     ]
   }
 

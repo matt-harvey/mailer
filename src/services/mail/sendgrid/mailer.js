@@ -2,7 +2,7 @@ export default class Mailer {
 
   axiosParams(email) {
     return {
-      url: this.apiURL(),
+      url: 'https://api.sendgrid.com/v3/mail/send',
       data: this.data(email),
       config: this.config(),
     };
@@ -15,10 +15,6 @@ export default class Mailer {
       subject: email.subject,
       content: [{ type: 'text/plain', value: email.message }],
     };
-  }
-
-  apiURL() {
-    return 'https://api.sendgrid.com/v3/mail/send';
   }
 
   config() {
