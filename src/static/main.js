@@ -37,10 +37,10 @@ $form.submit(function (event) {
 });
 
 function notifySuccess(data) {
-  alert('Your email has been sent to: ' + data.email.to.join(', '));
+  alert('Your email has been sent to: ' + data.result.email.to.join(', '));
 }
 
-function notifyFailure(error) {
-  var message = error.message || 'Unknown error';
+function notifyFailure(xhr) {
+  var message = (xhr.responseJSON.error || {}).message || 'Unknown error';
   alert('Email failed to send: ' + message);
 }
