@@ -41,6 +41,7 @@ function notifySuccess(data) {
 }
 
 function notifyFailure(xhr) {
+  // TODO Craft a nicer error message for the user.
   var message = (xhr.responseJSON.error || {}).message || 'Unknown error';
   alert('Email failed to send: ' + message);
 }
