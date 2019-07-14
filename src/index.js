@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv-safe';
 import express from 'express';
 import path from 'path';
+import '@babel/polyfill';
 
 import router from './router';
 

@@ -4,10 +4,13 @@
   "description": "Web app for sending emails",
   "main": "src/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist && npm run copy-static",
+    "copy-static": "cp src/static/index.html dist/static/ && cp src/static/index.css dist/static/",
     "serve": "node dist/index.js",
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "jest"
+    "start:prod": "node dist/index.js",
+    "test": "jest",
+    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
   },
   "homepage": "https://github.com/matt-harvey/mailer#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "dotenv-safe": "^6.1.0",
@@ -30,6 +34,7 @@
   "devDependencies": {
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
     "@babel/node": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
     "jest": "^24.8.0",

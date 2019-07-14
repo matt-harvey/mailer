@@ -1,6 +1,6 @@
 # Mailer
 
-This is a toy project that provides a web API for sending emails. It offers both a graphical web
+This is a toy NodeJS web service that provides an HTTP API for sending emails. It offers both a graphical web
 interace and a JSON API.
 
 ## Development
@@ -10,8 +10,7 @@ To run the application locally:
 * Clone this repo and `cd` into the project directory.
 * Run `npm install` to install dependencies.
 * Create a `.env` file at the project root and ensure it contains the environment variables
-  as demonstrated in `.env.example`. You will need to subscribe to the third party email services
-  to get the required API keys.
+  as demonstrated in `.env.example`.
 * `npm start` will serve the application at [localhost:3000](localhost:3000).
 * The web GUI is at [localhost:3000/](localhost:3000), and should be self-explanatory.
 * The JSON API is explained below.
