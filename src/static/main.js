@@ -4,11 +4,7 @@ var $form = $('#ml-send-email');
 
 $.validator.addMethod('emails', function(value, element) {
   var segments = value.split(', ');
-  var numSegments = segments.length;
-  if (numSegments === 0) {
-    return false;
-  }
-  for (var i = 0; i !== numSegments; ++i) {
+  for (var i = 0; i !== segments.length; ++i) {
     var segment = segments[i];
     var isValidEmail = $.validator.methods.email.call(this, segment, element);
     if (!isValidEmail) {

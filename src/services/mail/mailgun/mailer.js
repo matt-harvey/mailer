@@ -2,6 +2,8 @@ import FormData from 'form-data';
 
 export default class Mailer {
 
+  // Returns an object comprising { url, data, config }, suitable
+  // for passing as parameters to a call to axios.post(url, data, config).
   axiosParams(email) {
     const domain = process.env.MAILGUN_DOMAIN;
     const url = `https://api.mailgun.net/v3/${domain}/messages`;
@@ -11,10 +13,12 @@ export default class Mailer {
   }
 
   data(email) {
-    const { from, to, subject, message } = email;
+    const { from, to, cc, bcc, subject, message } = email;
     const data = new FormData();
     data.append('from', from);
     data.append('to', to.join(', '));
+    if (cc.length !== 0) data.append('cc', cc.join(', '));
+    if (bcc.length !== 0) data.append('bcc', bcc.join(', '));
     data.append('subject', subject);
     data.append('text', message);
     return data;

@@ -23,6 +23,9 @@ must contain the keys `"from"`, `"to"`, `"subject"` and `"message"` fields, all 
 be non-empty strings. In addition, `"to"` must be a valid email address (this is validated very liberally), and
 `"from"` must be a comma-separated list of such addresses.
 
+`"cc"` and `"bcc"` fields are also supported, and are optional. If provided, they must
+also be a comma-separated list of valid email addresses.
+
 For example, if you were running the application in your local development environment, a valid
 request to be made to the service using `curl`, as follows:
 

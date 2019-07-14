@@ -5,18 +5,26 @@ const send = async (request, response) => {
   try {
     const { body } = request;
     const { from, subject, message } = body;
-    const to = body.to.split(',').map(address => address.trim());
-    const email = Email({ from, subject, message, to });
+    const [to, cc, bcc] = ['to', 'cc', 'bcc'].map(fieldName => parseAddressField(body, fieldName));
+
+    // Validate that object received in form conforms to schema defined for Email: this
+    // will throw if it doesn't.
+    const email = Email({ from, to, cc, bcc, subject, message });
+
     const mailService = new MailService();
     await mailService.send(email);
-    // FIXME Different parts of the codebase have different representations for "to" (as an array,
-    // or as a comma-separated string). In particular, the response to the API request contains the
-    // latter, though the request is expected to contain the former. This is a confusingly
-    // inconsistent API.
     response.status(200).json({ result: { email } });
   } catch (error) {
     response.status(500).json({ error: { message: error.message } });
   }
 };
+
+// Grabs a field from the form value and parses it as a comma-separated list of strings,
+// returning an array of the list items.
+const parseAddressField = (formBody, fieldName) =>
+  (formBody[fieldName] || '')
+    .split(',')
+    .map(address => address.trim())
+    .filter(address => address.length !== 0);
 
 export default { send };
