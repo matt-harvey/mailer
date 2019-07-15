@@ -34,3 +34,9 @@ curl --header "Content-Type: application/json" --request POST --data '{ "from": 
 ```
 
 Note the service supports plain text emails only.
+
+## TODO
+
+* Write more tests
+* Use a proper logger
+* Dockerize it
