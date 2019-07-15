@@ -29,14 +29,15 @@ $form.submit(function (event) {
   }
   var data = $form.serialize();
   var url = $form.attr('action');
-  $.post(url, data).done(notifySuccess).fail(notifyFailure);
+  $.post(url, data).done(handleSuccess).fail(handleFailure);
 });
 
-function notifySuccess(data) {
+function handleSuccess(data) {
+  $form.trigger('reset');
   alert('Your email has been sent to: ' + data.result.email.to.join(', '));
 }
 
-function notifyFailure(xhr) {
+function handleFailure(xhr) {
   // TODO Craft a nicer error message for the user.
   var message = (xhr.responseJSON.error || {}).message || 'Unknown error';
   alert('Email failed to send: ' + message);
