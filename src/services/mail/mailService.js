@@ -1,30 +1,37 @@
 import axios from 'axios';
 
-import SendgridMailer from './sendgrid/mailer';
-import MailgunMailer from './mailgun/mailer';
+import { sendEmail as sendEmailViaSendgrid } from './sendgrid/mailer';
+import { sendEmail as sendEmailViaMailgun } from './mailgun/mailer';
 import log from '../log/log';
 
-export default class MailerService {
+// Provides an abstraction around 1 or more concrete mailers (instances of Mailer),
+// to arrange for sending an email via one of those mailers, or if that one fails, the next one, etc.,
+// until one succeeds.
+//
+// By default a `new MailService` will be configured with a Sendgrid mailer (first preference) and a Mailgun mailer
+// (second). The `.mailers` property contains the list of mailers on a given MailService instance.
+export default class MailService {
+
   constructor() {
     this.mailers = [
-      new SendgridMailer(),
-      new MailgunMailer(),
-    ]
+      new Mailer('Sendgrid', sendEmailViaSendgrid),
+      new Mailer('Mailgun', sendEmailViaMailgun),
+    ];
   }
 
+  // Send an email. The email argument should satisfy the Email schema defined in models/email.js.
   async send(email) {
     log('Sending email:', email);
     let error;
     for (let i = 0; i !== this.mailers.length; ++i) {
-      const mailer = this.mailers[i];
-      const { url, data, config } = mailer.axiosParams(email);
+      const { serviceName, send } = this.mailers[i];
       try {
-        const result = await axios.post(url, data, config);
-        log('Email sent:', email);
+        const result = await send(axios, email);
+        log(`Email sent via ${serviceName}:`, email);
         // Return after the first mailer succeeds
         return result;
       } catch (err) {
-        log('Failed to send email:', err.toString());
+        log(`Failed to send email via ${serviceName}:`, err.toString());
         error = err;
       }
     }
@@ -32,3 +39,13 @@ export default class MailerService {
     throw error;
   }
 }
+
+// Constructor to be called with new.
+// Encapsulates the name of an email service (e.g. 'Sendgrid') and an async send function
+// that when passed an axios instance and an email object, will send an email
+// via that service.
+export function Mailer(serviceName, send) {
+  this.serviceName = serviceName;
+  this.send = send;
+}
+
