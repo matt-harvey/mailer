@@ -43,3 +43,5 @@ Note the service supports plain text emails only.
 * Dockerize it
 * Make the web form nice, especially a nicer success/failure notification.
 * Examine timeouts for HTTP requests; ensure all are appropriate.
+* Use Swagger
+* Use TypeScript
