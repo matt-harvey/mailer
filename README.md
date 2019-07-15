@@ -42,3 +42,4 @@ Note the service supports plain text emails only.
 * Use a proper logger
 * Dockerize it
 * Make the web form nice, especially a nicer success/failure notification.
+* Examine timeouts for HTTP requests; ensure all are appropriate.
