@@ -43,7 +43,7 @@ export default class MailService {
 // Constructor to be called with new.
 // Encapsulates the name of an email service (e.g. 'Sendgrid') and an async send function
 // that when passed an axios instance and an email object, will send an email
-// via that service.
+// via that service. If the send function should indicate failure by throwing an exception.
 export function Mailer(serviceName, send) {
   this.serviceName = serviceName;
   this.send = send;
