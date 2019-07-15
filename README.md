@@ -12,6 +12,7 @@ To run the application locally:
 * Create a `.env` file at the project root and ensure it contains the environment variables
   as demonstrated in `.env.example`.
 * `npm start` will serve the application at [localhost:3000](http://localhost:3000).
+* `npm run test` will run the tests.
 * The web GUI is at [localhost:3000/](http://localhost:3000), and should be self-explanatory.
 * The JSON API is explained below.
 

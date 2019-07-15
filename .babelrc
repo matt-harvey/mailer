@@ -4,5 +4,8 @@
       "@babel/preset-env",
     ]
   ],
-  "plugins": ["@babel/plugin-transform-regenerator"]
+  "plugins": ["@babel/plugin-transform-regenerator"],
+  "ignore": [
+    "**/*.test.js"
+  ]
 }

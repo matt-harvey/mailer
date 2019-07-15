@@ -20,8 +20,8 @@ const Email = struct({
   to: intersection([['email'], 'nonEmpty']),
   cc: ['email'],
   bcc: ['email'],
-  subject: 'string',
-  message: 'string',
+  subject: intersection(['string', 'nonEmpty']),
+  message: intersection(['string', 'nonEmpty']),
 });
 
 export default Email;
