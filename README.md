@@ -21,8 +21,8 @@ To run the application locally:
 To send an email using the JSON API, make a JSON POST request to
 [/api/v1/emails/send](localhost:3000/api/v1/emails/send). The JSON request body
 must contain the keys `"from"`, `"to"`, `"subject"` and `"message"` fields, all of which must
-be non-empty strings. In addition, `"to"` must be a valid email address (this is validated very liberally), and
-`"from"` must be a comma-separated list of such addresses.
+be non-empty strings. In addition, `"from"` must be a valid email address (this is validated very
+liberally), and `"to"` must be a comma-separated, non-empty list of such addresses.
 
 `"cc"` and `"bcc"` fields are also supported, and are optional. If provided, they must
 also be a comma-separated list of valid email addresses.
